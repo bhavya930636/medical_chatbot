@@ -3,7 +3,8 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from typing import List
 from langchain.schema import Document
 from langchain.embeddings import HuggingFaceEmbeddings
-
+# from langchain_google_genai import GoogleGenerativeAIEmbeddings
+import os
 def load_pdf_files(data):
     loader = DirectoryLoader(
         data,
@@ -41,3 +42,11 @@ def download_embeddings():
         model_name = model_name,
     )
     return embeddings
+
+# def download_google_embeddings():
+#     embeddings = GoogleGenerativeAIEmbeddings(
+#         model="gemini-embedding-2-preview",
+#         output_dimensionality=768,
+#         google_api_key=os.getenv("GEMINI_API_KEY")
+#     )
+#     return embeddings
